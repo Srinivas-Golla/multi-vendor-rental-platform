@@ -2,78 +2,49 @@
 <html>
 <head>
 <title>FleetDesk</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css?v=3">
 </head>
 <body>
 
 <div class="header">
-  <div class="topbar">
-    <div class="logo">FD</div>
-    <div>
-      <h1 class="app-title">FleetDesk</h1>
-      <p class="subtitle">Multi Vendor Self-Drive Rental Platform</p>
-    </div>
-  </div>
+  <div class="logo">FD</div>
+  <h1>FleetDesk</h1>
+  <p>Multi Vendor Self-Drive Rental Platform</p>
 </div>
 
 <div class="container">
-
-  <div class="login-card" id="loginBox">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button class="btn" onclick="login()">Login</button>
-  </div>
-
-  <div id="modules" style="display:none;">
-
-    <div class="module-row">
+  <div class="module-grid">
+    <a class="module-card" href="owner.html">
       <div class="icon">🚘</div>
-      <div class="module-info"><h3>Fleet Owner</h3><p>Add vehicles and manage bookings</p></div>
-      <a class="open-btn" href="owner.html">Open</a>
-    </div>
+      <h3>Fleet Owner</h3>
+      <p>Add vehicles</p>
+    </a>
 
-    <div class="module-row">
+    <a class="module-card" href="customer.html">
       <div class="icon">👤</div>
-      <div class="module-info"><h3>Customer</h3><p>Search and book rental vehicles</p></div>
-      <a class="open-btn" href="customer.html">Open</a>
-    </div>
+      <h3>Customer</h3>
+      <p>Book vehicle</p>
+    </a>
 
-    <div class="module-row">
+    <a class="module-card" href="admin.html">
       <div class="icon">🛡</div>
-      <div class="module-info"><h3>Platform Admin</h3><p>Manage companies and users</p></div>
-      <a class="open-btn" href="admin.html">Open</a>
-    </div>
+      <h3>Admin</h3>
+      <p>Manage users</p>
+    </a>
 
-    <div class="module-row">
+    <a class="module-card" href="booking.html">
       <div class="icon">📅</div>
-      <div class="module-info"><h3>Booking</h3><p>Track booking status</p></div>
-      <a class="open-btn" href="booking.html">Open</a>
-    </div>
+      <h3>Booking</h3>
+      <p>Track status</p>
+    </a>
 
-    <div class="module-row">
+    <a class="module-card" href="payment.html">
       <div class="icon">💳</div>
-      <div class="module-info"><h3>Payment</h3><p>Subscription and invoices</p></div>
-      <a class="open-btn" href="payment.html">Open</a>
-    </div>
-
-    <button class="btn logout" onclick="logout()">Logout</button>
-
+      <h3>Payment</h3>
+      <p>Pay invoice</p>
+    </a>
   </div>
-
 </div>
-
-<script>
-function login() {
-  document.getElementById("loginBox").style.display = "none";
-  document.getElementById("modules").style.display = "block";
-}
-
-function logout() {
-  document.getElementById("modules").style.display = "none";
-  document.getElementById("loginBox").style.display = "block";
-}
-</script>
 
 </body>
 </html>
