@@ -18,45 +18,62 @@
 
 <div class="container">
 
-  <div class="login-card">
+  <div class="login-card" id="loginBox">
     <h2>Login</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button class="btn" onclick="alert('Login successful')">Login</button>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button class="btn" onclick="login()">Login</button>
   </div>
 
-  <div class="module-row">
-    <div class="icon">🚘</div>
-    <div class="module-info"><h3>Fleet Owner</h3><p>Add vehicles and manage bookings</p></div>
-    <a class="open-btn" href="owner.html">Open</a>
-  </div>
+  <div id="modules" style="display:none;">
 
-  <div class="module-row">
-    <div class="icon">👤</div>
-    <div class="module-info"><h3>Customer</h3><p>Search and book rental vehicles</p></div>
-    <a class="open-btn" href="customer.html">Open</a>
-  </div>
+    <div class="module-row">
+      <div class="icon">🚘</div>
+      <div class="module-info"><h3>Fleet Owner</h3><p>Add vehicles and manage bookings</p></div>
+      <a class="open-btn" href="owner.html">Open</a>
+    </div>
 
-  <div class="module-row">
-    <div class="icon">🛡</div>
-    <div class="module-info"><h3>Platform Admin</h3><p>Manage companies and users</p></div>
-    <a class="open-btn" href="admin.html">Open</a>
-  </div>
+    <div class="module-row">
+      <div class="icon">👤</div>
+      <div class="module-info"><h3>Customer</h3><p>Search and book rental vehicles</p></div>
+      <a class="open-btn" href="customer.html">Open</a>
+    </div>
 
-  <div class="module-row">
-    <div class="icon">📅</div>
-    <div class="module-info"><h3>Booking</h3><p>Track booking status</p></div>
-    <a class="open-btn" href="booking.html">Open</a>
-  </div>
+    <div class="module-row">
+      <div class="icon">🛡</div>
+      <div class="module-info"><h3>Platform Admin</h3><p>Manage companies and users</p></div>
+      <a class="open-btn" href="admin.html">Open</a>
+    </div>
 
-  <div class="module-row">
-    <div class="icon">💳</div>
-    <div class="module-info"><h3>Payment</h3><p>Subscription and invoices</p></div>
-    <a class="open-btn" href="payment.html">Open</a>
-  </div>
+    <div class="module-row">
+      <div class="icon">📅</div>
+      <div class="module-info"><h3>Booking</h3><p>Track booking status</p></div>
+      <a class="open-btn" href="booking.html">Open</a>
+    </div>
 
-  <button class="btn logout" onclick="alert('Logged out')">Logout</button>
+    <div class="module-row">
+      <div class="icon">💳</div>
+      <div class="module-info"><h3>Payment</h3><p>Subscription and invoices</p></div>
+      <a class="open-btn" href="payment.html">Open</a>
+    </div>
+
+    <button class="btn logout" onclick="logout()">Logout</button>
+
+  </div>
 
 </div>
+
+<script>
+function login() {
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("modules").style.display = "block";
+}
+
+function logout() {
+  document.getElementById("modules").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+}
+</script>
+
 </body>
 </html>
