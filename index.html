@@ -6,6 +6,16 @@
 <body>
   <h1>FleetDesk</h1>
   <p>Multi Vendor Rental Platform</p>
-  <button>Book Vehicle</button>
+
+  <button onclick="bookVehicle()">Book Vehicle</button>
+
+  <p id="message"></p>
+
+  <script>
+    function bookVehicle() {
+      document.getElementById("message").innerHTML =
+        "Booking page opened successfully!";
+    }
+  </script>
 </body>
 </html>
