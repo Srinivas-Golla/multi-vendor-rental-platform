@@ -1,52 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FleetDesk</title>
-  <link rel="stylesheet" href="style.css">
+<title>FleetDesk</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">🚗</div>
-  <h1 class="app-title">FleetDesk</h1>
-  <p>Multi Vendor Rental Platform</p>
+  <div class="topbar">
+    <div class="logo">FD</div>
+    <div>
+      <h1 class="app-title">FleetDesk</h1>
+      <p class="subtitle">Multi Vendor Self-Drive Rental Platform</p>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-  <div class="card">
+
+  <div class="login-card">
     <h2>Login</h2>
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
     <button class="btn" onclick="alert('Login successful')">Login</button>
   </div>
 
-  <div class="card">
-    <h2>Fleet Owner</h2>
-    <a class="btn" href="owner.html">Open</a>
+  <div class="module-row">
+    <div class="icon">🚘</div>
+    <div class="module-info"><h3>Fleet Owner</h3><p>Add vehicles and manage bookings</p></div>
+    <a class="open-btn" href="owner.html">Open</a>
   </div>
 
-  <div class="card">
-    <h2>Customer</h2>
-    <a class="btn" href="customer.html">Open</a>
+  <div class="module-row">
+    <div class="icon">👤</div>
+    <div class="module-info"><h3>Customer</h3><p>Search and book rental vehicles</p></div>
+    <a class="open-btn" href="customer.html">Open</a>
   </div>
 
-  <div class="card">
-    <h2>Platform Admin</h2>
-    <a class="btn" href="admin.html">Open</a>
+  <div class="module-row">
+    <div class="icon">🛡</div>
+    <div class="module-info"><h3>Platform Admin</h3><p>Manage companies and users</p></div>
+    <a class="open-btn" href="admin.html">Open</a>
   </div>
 
-  <div class="card">
-    <h2>Booking</h2>
-    <a class="btn" href="booking.html">Open</a>
+  <div class="module-row">
+    <div class="icon">📅</div>
+    <div class="module-info"><h3>Booking</h3><p>Track booking status</p></div>
+    <a class="open-btn" href="booking.html">Open</a>
   </div>
 
-  <div class="card">
-    <h2>Payment</h2>
-    <a class="btn" href="payment.html">Open</a>
+  <div class="module-row">
+    <div class="icon">💳</div>
+    <div class="module-info"><h3>Payment</h3><p>Subscription and invoices</p></div>
+    <a class="open-btn" href="payment.html">Open</a>
   </div>
 
   <button class="btn logout" onclick="alert('Logged out')">Logout</button>
-</div>
 
+</div>
 </body>
 </html>
