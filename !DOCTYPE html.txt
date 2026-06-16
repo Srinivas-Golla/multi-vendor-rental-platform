@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer - FleetDesk</title>
+</head>
+<body>
+  <h1>Customer Module</h1>
+
+  <button>Browse Rental Companies</button>
+  <button>View Available Vehicles</button>
+  <button>Book Vehicle</button>
+  <button>Booking History</button>
+
+  <br><br>
+  <button onclick="location.href='index.html'">Back Home</button>
+</body>
+</html>

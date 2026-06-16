@@ -5,16 +5,14 @@
 </head>
 <body>
   <h1>FleetDesk</h1>
-  <p>Multi Vendor Rental Platform</p>
+  <p>Multi Vendor Self-Drive Rental Management Platform</p>
 
-  <button onclick="bookVehicle()">Book Vehicle</button>
+  <h2>Select Module</h2>
 
-  <p id="message"></p>
-
- <script>
-function bookVehicle() {
-  document.getElementById("message").innerHTML = "Booking page opened successfully!";
-}
-</script>
+  <button onclick="location.href='owner.html'">Fleet Owner</button>
+  <button onclick="location.href='customer.html'">Customer</button>
+  <button onclick="location.href='admin.html'">Platform Admin</button>
+  <button onclick="location.href='booking.html'">Booking</button>
+  <button onclick="location.href='payment.html'">Payment</button>
 </body>
 </html>
