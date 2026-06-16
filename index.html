@@ -1,50 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>FleetDesk</title>
-<link rel="stylesheet" href="./style.css?v=3">
+    <title>FleetDesk</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">FD</div>
-  <h1>FleetDesk</h1>
-  <p>Multi Vendor Self-Drive Rental Platform</p>
+    <div class="logo-box">FD</div>
+    <div>
+        <h1>FleetDesk</h1>
+        <p>Multi Vendor Rental Platform</p>
+    </div>
 </div>
 
-<div class="container">
-  <div class="module-grid">
-    <a class="module-card" href="owner.html">
-      <div class="icon">🚘</div>
-      <h3>Fleet Owner</h3>
-      <p>Add vehicles</p>
-    </a>
+<div id="loginPage" class="login-container">
 
-    <a class="module-card" href="customer.html">
-      <div class="icon">👤</div>
-      <h3>Customer</h3>
-      <p>Book vehicle</p>
-    </a>
+    <div class="login-card">
+        <h2>Welcome Back</h2>
 
-    <a class="module-card" href="admin.html">
-      <div class="icon">🛡</div>
-      <h3>Admin</h3>
-      <p>Manage users</p>
-    </a>
+        <input type="text" placeholder="Username" id="username">
+        <input type="password" placeholder="Password" id="password">
 
-    <a class="module-card" href="booking.html">
-      <div class="icon">📅</div>
-      <h3>Booking</h3>
-      <p>Track status</p>
-    </a>
+        <button class="primary-btn" onclick="login()">Login</button>
+    </div>
 
-    <a class="module-card" href="payment.html">
-      <div class="icon">💳</div>
-      <h3>Payment</h3>
-      <p>Pay invoice</p>
-    </a>
-  </div>
 </div>
+
+<div id="dashboard" style="display:none;">
+
+    <div class="dashboard-header">
+        <h2>Dashboard</h2>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>125</h3>
+            <p>Vehicles</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>48</h3>
+            <p>Bookings</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>22</h3>
+            <p>Customers</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>₹85K</h3>
+            <p>Revenue</p>
+        </div>
+
+    </div>
+
+    <div class="module-grid">
+
+        <a href="owner.html" class="module-card">
+            🚘
+            <h3>Fleet Owner</h3>
+            <p>Manage vehicles</p>
+        </a>
+
+        <a href="customer.html" class="module-card">
+            👤
+            <h3>Customers</h3>
+            <p>Customer records</p>
+        </a>
+
+        <a href="booking.html" class="module-card">
+            📅
+            <h3>Bookings</h3>
+            <p>Booking management</p>
+        </a>
+
+        <a href="payment.html" class="module-card">
+            💳
+            <h3>Payments</h3>
+            <p>Payment tracking</p>
+        </a>
+
+        <a href="admin.html" class="module-card">
+            ⚙️
+            <h3>Admin</h3>
+            <p>Platform settings</p>
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+function login() {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+}
+
+function logout() {
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginPage").style.display = "block";
+}
+</script>
 
 </body>
 </html>
