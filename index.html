@@ -7,42 +7,45 @@
 <body>
 
 <div class="header">
-  <h1>FleetDesk</h1>
-  <p>Self-Drive Rental Platform</p>
+  <div class="logo">🚗</div>
+  <h1 class="app-title">FleetDesk</h1>
+  <p>Multi Vendor Rental Platform</p>
 </div>
 
 <div class="container">
+  <div class="card">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="btn" onclick="alert('Login successful')">Login</button>
+  </div>
 
   <div class="card">
     <h2>Fleet Owner</h2>
-    <p>Add vehicles and manage bookings</p>
     <a class="btn" href="owner.html">Open</a>
   </div>
 
   <div class="card">
     <h2>Customer</h2>
-    <p>Search vehicles and book rentals</p>
     <a class="btn" href="customer.html">Open</a>
   </div>
 
   <div class="card">
     <h2>Platform Admin</h2>
-    <p>Manage companies and users</p>
     <a class="btn" href="admin.html">Open</a>
   </div>
 
   <div class="card">
     <h2>Booking</h2>
-    <p>Track and manage bookings</p>
     <a class="btn" href="booking.html">Open</a>
   </div>
 
   <div class="card">
     <h2>Payment</h2>
-    <p>Subscription and invoice management</p>
     <a class="btn" href="payment.html">Open</a>
   </div>
 
+  <button class="btn logout" onclick="alert('Logged out')">Logout</button>
 </div>
 
 </body>

@@ -1,14 +1,24 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  background: linear-gradient(135deg, #071952, #088395);
+  color: #222;
 }
 
 .header {
-  background: #0b5ed7;
+  background: #071952;
   color: white;
   padding: 20px;
   text-align: center;
+}
+
+.logo {
+  font-size: 45px;
+}
+
+.app-title {
+  margin: 5px;
+  font-size: 28px;
 }
 
 .container {
@@ -19,8 +29,7 @@ body {
   background: white;
   padding: 18px;
   margin-bottom: 15px;
-  border-radius: 14px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  border-radius: 16px;
 }
 
 .btn {
@@ -28,7 +37,7 @@ body {
   width: 100%;
   padding: 14px;
   margin-top: 10px;
-  background: #0b5ed7;
+  background: #088395;
   color: white;
   text-align: center;
   border-radius: 10px;
@@ -37,10 +46,6 @@ body {
   font-size: 16px;
 }
 
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.logout {
+  background: #d90429;
 }
