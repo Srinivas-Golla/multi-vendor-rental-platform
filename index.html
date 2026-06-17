@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>FleetDesk</title>
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=60">
 </head>
 <body>
 
@@ -24,15 +24,20 @@
       <option value="admin">Admin</option>
     </select>
 
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="tel" id="mobile" placeholder="Mobile Number" required>
 
-    <button class="primary-btn" onclick="login()">Login</button>
+    <button class="primary-btn" onclick="getOtp()">Get OTP</button>
+
+    <div id="otpBox" style="display:none;">
+      <input type="text" id="otp" placeholder="Enter OTP">
+      <button class="primary-btn" onclick="confirmOtp()">Confirm OTP</button>
+      <p id="otpMsg"></p>
+    </div>
   </div>
 </div>
 
 <div id="dashboard" style="display:none;">
-
   <div class="dashboard-header">
     <h2 id="dashboardTitle">Dashboard</h2>
     <button class="logout-btn" onclick="logout()">Logout</button>
@@ -55,11 +60,36 @@
     <a href="booking.html" class="module-card">📅<h3>All Bookings</h3><p>Monitor bookings</p></a>
     <a href="payment.html" class="module-card">💳<h3>Payments</h3><p>Track transactions</p></a>
   </div>
-
 </div>
 
 <script>
-function login() {
+var generatedOtp = "";
+
+function getOtp() {
+  var username = document.getElementById("username").value;
+  var mobile = document.getElementById("mobile").value;
+
+  if (username === "" || mobile === "") {
+    alert("Please enter username and mobile number");
+    return;
+  }
+
+  generatedOtp = "1234";
+  document.getElementById("otpBox").style.display = "block";
+  document.getElementById("otpMsg").innerHTML = "Demo OTP is 1234";
+}
+
+function confirmOtp() {
+  var otp = document.getElementById("otp").value;
+
+  if (otp === generatedOtp) {
+    openDashboard();
+  } else {
+    alert("Invalid OTP");
+  }
+}
+
+function openDashboard() {
   var role = document.getElementById("role").value;
 
   document.getElementById("loginPage").style.display = "none";
@@ -86,8 +116,7 @@ function login() {
 }
 
 function logout() {
-  document.getElementById("dashboard").style.display = "none";
-  document.getElementById("loginPage").style.display = "flex";
+  location.reload();
 }
 </script>
 
