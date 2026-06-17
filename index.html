@@ -2,95 +2,24 @@
 <html>
 <head>
 <title>FleetDesk</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-
-body{
-  min-height:100vh;
-  background:linear-gradient(135deg,#020617,#1e3a8a,#06b6d4);
-}
-
-.header{
-  color:white;
-  padding:28px;
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-
-.logo-box{
-  width:100px;
-  height:100px;
-  background:white;
-  color:#1e3a8a;
-  border-radius:28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
-  font-weight:bold;
-}
-
-.login-container{
-  display:flex;
-  justify-content:center;
-  padding:40px;
-}
-
-.login-card{
-  background:white;
-  width:360px;
-  padding:28px;
-  border-radius:24px;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
-}
-
-input,select{
-  width:100%;
-  padding:14px;
-  margin:10px 0;
-  border-radius:12px;
-  border:1px solid #d1d5db;
-}
-
-.primary-btn,.logout-btn{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:#2563eb;
-  color:white;
-  font-weight:bold;
-}
-
-.dashboard-header{
-  color:white;
-  padding:20px;
-}
-
-.module-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  padding:20px;
-}
-
-.module-card{
-  background:white;
-  color:#111827;
-  text-decoration:none;
-  padding:26px;
-  border-radius:24px;
-  text-align:center;
-  box-shadow:0 12px 30px rgba(0,0,0,.25);
-}
-
-.module-card h3{margin:10px 0 6px}
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,#020617,#1e40af,#06b6d4)}
+.header{color:white;padding:25px;display:flex;gap:18px;align-items:center}
+.logo-box{width:85px;height:85px;background:white;color:#1e40af;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:bold}
+.login-container{display:flex;justify-content:center;padding:30px}
+.login-card{background:white;width:360px;padding:25px;border-radius:24px;box-shadow:0 15px 35px rgba(0,0,0,.3)}
+input,select{width:100%;padding:14px;margin:9px 0;border-radius:12px;border:1px solid #ccc}
+.primary-btn,.logout-btn{width:100%;padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:bold;margin-top:8px}
+.logout-btn{background:#ef4444}
+.dashboard-header{color:white;padding:20px}
+.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px}
+.module-card{background:white;text-decoration:none;color:#111827;padding:22px;border-radius:22px;text-align:center;box-shadow:0 12px 25px rgba(0,0,0,.25)}
+.module-card h3{margin:10px 0 5px}
 </style>
 </head>
-
 <body>
+
 <div class="header">
   <div class="logo-box">FD</div>
   <div>
@@ -102,19 +31,22 @@ input,select{
 <div id="loginPage" class="login-container">
   <div class="login-card">
     <h2>Login</h2>
+
     <select id="role">
       <option value="customer">Customer</option>
       <option value="owner">Fleet Owner</option>
       <option value="admin">Admin</option>
     </select>
+
     <input type="text" id="username" placeholder="Username">
     <input type="tel" id="mobile" placeholder="Mobile Number">
+
     <button class="primary-btn" onclick="getOtp()">Get OTP</button>
 
     <div id="otpBox" style="display:none;">
       <input type="text" id="otp" placeholder="Enter OTP">
       <button class="primary-btn" onclick="confirmOtp()">Confirm OTP</button>
-      <p id="otpMsg"></p>
+      <p id="otpMsg">Demo OTP: 1234</p>
     </div>
   </div>
 </div>
@@ -126,27 +58,78 @@ input,select{
   </div>
 
   <div id="customerModules" class="module-grid" style="display:none;">
-    <a href="customer.html" class="module-card">👤<h3>Browse Vehicles</h3><p>Search and book vehicles</p></a>
-    <a href="booking.html" class="module-card">📅<h3>My Bookings</h3><p>View booking status</p></a>
-    <a href="payment.html" class="module-card">💳<h3>Payments</h3><p>Pay invoices</p></a>
+    <a href="customer.html" class="module-card">🚘<h3>Browse Vehicles</h3><p>Book vehicles</p></a>
+    <a href="booking.html" class="module-card">📅<h3>My Bookings</h3><p>Booking status</p></a>
+    <a href="payment.html" class="module-card">💳<h3>Payments</h3><p>Invoices</p></a>
+  </div>
+
+  <div id="ownerModules" class="module-grid" style="display:none;">
+    <a href="owner.html" class="module-card">🚗<h3>My Vehicles</h3><p>Add vehicles</p></a>
+    <a href="booking.html" class="module-card">📅<h3>Bookings</h3><p>Manage bookings</p></a>
+    <a href="payment.html" class="module-card">💰<h3>Revenue</h3><p>Track income</p></a>
+  </div>
+
+  <div id="adminModules" class="module-grid" style="display:none;">
+    <a href="admin.html" class="module-card">⚙️<h3>Admin</h3><p>Manage platform</p></a>
+    <a href="booking.html" class="module-card">📅<h3>All Bookings</h3><p>Monitor</p></a>
+    <a href="payment.html" class="module-card">💳<h3>Payments</h3><p>Transactions</p></a>
   </div>
 </div>
 
 <script>
-window.onload = function() {
-  const params = new URLSearchParams(window.location.search);
-  const role = params.get("role");
+function getOtp(){
+  var username=document.getElementById("username").value;
+  var mobile=document.getElementById("mobile").value;
 
-  if (role) {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
-
-    if (role === "customer") {
-      document.getElementById("dashboardTitle").innerHTML = "Customer Dashboard";
-      document.getElementById("customerModules").style.display = "grid";
-    }
+  if(username==="" || mobile===""){
+    alert("Enter username and mobile number");
+    return;
   }
-};
+
+  document.getElementById("otpBox").style.display="block";
+}
+
+function confirmOtp(){
+  var otp=document.getElementById("otp").value;
+
+  if(otp!=="1234"){
+    alert("Invalid OTP. Use 1234");
+    return;
+  }
+
+  openDashboard();
+}
+
+function openDashboard(){
+  var role=document.getElementById("role").value;
+
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("dashboard").style.display="block";
+
+  document.getElementById("customerModules").style.display="none";
+  document.getElementById("ownerModules").style.display="none";
+  document.getElementById("adminModules").style.display="none";
+
+  if(role==="customer"){
+    document.getElementById("dashboardTitle").innerHTML="Customer Dashboard";
+    document.getElementById("customerModules").style.display="grid";
+  }
+
+  if(role==="owner"){
+    document.getElementById("dashboardTitle").innerHTML="Fleet Owner Dashboard";
+    document.getElementById("ownerModules").style.display="grid";
+  }
+
+  if(role==="admin"){
+    document.getElementById("dashboardTitle").innerHTML="Admin Dashboard";
+    document.getElementById("adminModules").style.display="grid";
+  }
+}
+
+function logout(){
+  location.reload();
+}
 </script>
+
 </body>
 </html>
