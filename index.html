@@ -133,27 +133,20 @@ input,select{
 </div>
 
 <script>
-var generatedOtp = "1234";
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  const role = params.get("role");
 
-function getOtp(){
-  document.getElementById("otpBox").style.display="block";
-  document.getElementById("otpMsg").innerHTML="Demo OTP: 1234";
-}
+  if (role) {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
 
-function confirmOtp(){
-  if(document.getElementById("otp").value==="1234"){
-    document.getElementById("loginPage").style.display="none";
-    document.getElementById("dashboard").style.display="block";
-    document.getElementById("dashboardTitle").innerHTML="Customer Dashboard";
-    document.getElementById("customerModules").style.display="grid";
-  }else{
-    alert("Invalid OTP");
+    if (role === "customer") {
+      document.getElementById("dashboardTitle").innerHTML = "Customer Dashboard";
+      document.getElementById("customerModules").style.display = "grid";
+    }
   }
-}
-
-function logout(){
-  location.reload();
-}
+};
 </script>
 </body>
 </html>
