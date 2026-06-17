@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>FleetDesk</title>
+<title>Customer - FleetDesk</title>
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 body{margin:0;min-height:100vh;background:linear-gradient(135deg,#020617,#1e40af,#06b6d4)}
 .header{color:white;padding:25px;display:flex;gap:18px;align-items:center}
-.logo-box{width:85px;height:85px;background:white;color:#1e40af;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:bold}
-.login-container{display:flex;justify-content:center;padding:30px}
-.login-card{background:white;width:360px;padding:25px;border-radius:24px;box-shadow:0 15px 35px rgba(0,0,0,.3)}
+.logo-box{width:80px;height:80px;background:white;color:#1e40af;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:bold}
+.container{display:flex;justify-content:center;padding:30px}
+.card{background:white;width:380px;padding:25px;border-radius:24px;box-shadow:0 15px 35px rgba(0,0,0,.3)}
 input,select{width:100%;padding:14px;margin:9px 0;border-radius:12px;border:1px solid #ccc}
-.primary-btn,.logout-btn{width:100%;padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:bold;margin-top:8px}
-.logout-btn{background:#ef4444}
-.dashboard-header{color:white;padding:20px}
-.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px}
-.module-card{background:white;text-decoration:none;color:#111827;padding:22px;border-radius:22px;text-align:center;box-shadow:0 12px 25px rgba(0,0,0,.25)}
-.module-card h3{margin:10px 0 5px}
+.btn{width:100%;padding:14px;border:0;border-radius:12px;background:#2563eb;color:white;font-weight:bold;margin-top:8px}
+.back{background:#ef4444}
+.result-box{margin-top:18px;background:#ecfeff;padding:15px;border-radius:15px}
 </style>
 </head>
 <body>
@@ -23,111 +20,51 @@ input,select{width:100%;padding:14px;margin:9px 0;border-radius:12px;border:1px 
 <div class="header">
   <div class="logo-box">FD</div>
   <div>
-    <h1>FleetDesk</h1>
-    <p>Multi Vendor Rental Platform</p>
+    <h1>Customer Module</h1>
+    <p>Book your self-drive vehicle</p>
   </div>
 </div>
 
-<div id="loginPage" class="login-container">
-  <div class="login-card">
-    <h2>Login</h2>
+<div class="container">
+  <div class="card">
+    <h2>Book Vehicle</h2>
 
-    <select id="role">
-      <option value="customer">Customer</option>
-      <option value="owner">Fleet Owner</option>
-      <option value="admin">Admin</option>
-    </select>
+    <form onsubmit="bookVehicle(event)">
+      <input type="text" id="customerName" placeholder="Customer Name" required>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="tel" id="mobile" placeholder="Mobile Number">
+      <select id="vehicle">
+        <option>Swift Car</option>
+        <option>Activa Bike</option>
+        <option>Innova SUV</option>
+      </select>
 
-    <button class="primary-btn" onclick="getOtp()">Get OTP</button>
+      <input type="date" id="date" required>
+      <input type="number" id="days" placeholder="Number of Days" required>
 
-    <div id="otpBox" style="display:none;">
-      <input type="text" id="otp" placeholder="Enter OTP">
-      <button class="primary-btn" onclick="confirmOtp()">Confirm OTP</button>
-      <p id="otpMsg">Demo OTP: 1234</p>
-    </div>
-  </div>
-</div>
+      <button class="btn" type="submit">Confirm Booking</button>
+    </form>
 
-<div id="dashboard" style="display:none;">
-  <div class="dashboard-header">
-    <h2 id="dashboardTitle">Dashboard</h2>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </div>
+    <div id="bookingResult" class="result-box"></div>
 
-  <div id="customerModules" class="module-grid" style="display:none;">
-    <a href="customer.html" class="module-card">🚘<h3>Browse Vehicles</h3><p>Book vehicles</p></a>
-    <a href="booking.html" class="module-card">📅<h3>My Bookings</h3><p>Booking status</p></a>
-    <a href="payment.html" class="module-card">💳<h3>Payments</h3><p>Invoices</p></a>
-  </div>
-
-  <div id="ownerModules" class="module-grid" style="display:none;">
-    <a href="owner.html" class="module-card">🚗<h3>My Vehicles</h3><p>Add vehicles</p></a>
-    <a href="booking.html" class="module-card">📅<h3>Bookings</h3><p>Manage bookings</p></a>
-    <a href="payment.html" class="module-card">💰<h3>Revenue</h3><p>Track income</p></a>
-  </div>
-
-  <div id="adminModules" class="module-grid" style="display:none;">
-    <a href="admin.html" class="module-card">⚙️<h3>Admin</h3><p>Manage platform</p></a>
-    <a href="booking.html" class="module-card">📅<h3>All Bookings</h3><p>Monitor</p></a>
-    <a href="payment.html" class="module-card">💳<h3>Payments</h3><p>Transactions</p></a>
+    <button class="btn back" onclick="location.href='index.html?role=customer'">Back Dashboard</button>
   </div>
 </div>
 
 <script>
-function getOtp(){
-  var username=document.getElementById("username").value;
-  var mobile=document.getElementById("mobile").value;
+function bookVehicle(event) {
+  event.preventDefault();
 
-  if(username==="" || mobile===""){
-    alert("Enter username and mobile number");
-    return;
-  }
+  var name = document.getElementById("customerName").value;
+  var vehicle = document.getElementById("vehicle").value;
+  var date = document.getElementById("date").value;
+  var days = document.getElementById("days").value;
 
-  document.getElementById("otpBox").style.display="block";
-}
-
-function confirmOtp(){
-  var otp=document.getElementById("otp").value;
-
-  if(otp!=="1234"){
-    alert("Invalid OTP. Use 1234");
-    return;
-  }
-
-  openDashboard();
-}
-
-function openDashboard(){
-  var role=document.getElementById("role").value;
-
-  document.getElementById("loginPage").style.display="none";
-  document.getElementById("dashboard").style.display="block";
-
-  document.getElementById("customerModules").style.display="none";
-  document.getElementById("ownerModules").style.display="none";
-  document.getElementById("adminModules").style.display="none";
-
-  if(role==="customer"){
-    document.getElementById("dashboardTitle").innerHTML="Customer Dashboard";
-    document.getElementById("customerModules").style.display="grid";
-  }
-
-  if(role==="owner"){
-    document.getElementById("dashboardTitle").innerHTML="Fleet Owner Dashboard";
-    document.getElementById("ownerModules").style.display="grid";
-  }
-
-  if(role==="admin"){
-    document.getElementById("dashboardTitle").innerHTML="Admin Dashboard";
-    document.getElementById("adminModules").style.display="grid";
-  }
-}
-
-function logout(){
-  location.reload();
+  document.getElementById("bookingResult").innerHTML =
+    "<h3>Booking Confirmed</h3>" +
+    "<p><b>Name:</b> " + name + "</p>" +
+    "<p><b>Vehicle:</b> " + vehicle + "</p>" +
+    "<p><b>Date:</b> " + date + "</p>" +
+    "<p><b>Days:</b> " + days + "</p>";
 }
 </script>
 
