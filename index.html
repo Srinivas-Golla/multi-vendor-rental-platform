@@ -46,12 +46,18 @@ input,select{width:100%;padding:14px;margin:9px 0;border-radius:12px;border:1px 
 
     <div id="bookingResult" class="result-box"></div>
 
-    <button class="btn back" onclick="location.href='index.html?role=customer'">Back Dashboard</button>
+    <button class="btn back-btn" onclick="goBack()">Back Dashboard</button>
   </div>
 </div>
 
 <script>
-function bookVehicle(event) {
+function bookVehicle(event){
+   ...
+}
+
+function goBack(){
+   window.location.href="index.html";
+}
   event.preventDefault();
 
   var name = document.getElementById("customerName").value;
