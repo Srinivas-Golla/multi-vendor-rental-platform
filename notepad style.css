@@ -19,9 +19,9 @@ body{
 }
 
 .logo-box{
-    width:60px;
-    height:60px;
-    background:white;
+    width:100px;
+    height:100px;
+    background:rgb(192, 58, 58);
     color:#2563eb;
     border-radius:15px;
     display:flex;
@@ -34,13 +34,13 @@ body{
 .login-container{
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:right;
     height:80vh;
 }
 
 .login-card{
     width:350px;
-    background:white;
+    background:rgb(156, 64, 64);
     padding:25px;
     border-radius:20px;
     box-shadow:0 10px 30px rgba(0,0,0,0.1);
@@ -53,7 +53,7 @@ body{
 .login-card input{
     width:100%;
     padding:12px;
-    margin-top:10px;
+    scroll-margin-block-end:10px;
     border:1px solid #ddd;
     border-radius:10px;
 }
@@ -72,7 +72,7 @@ body{
 .dashboard-header{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:right;
     padding:20px;
 }
 
