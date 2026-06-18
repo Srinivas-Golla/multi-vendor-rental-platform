@@ -111,7 +111,7 @@ function logout(){
 
 window.onload=function(){
   let params=new URLSearchParams(window.location.search);
-  let role=params.get("role");
+  let role=params.get("role") || localStorage.getItem("role");
 
   if(role){
     document.getElementById("role").value=role;
