@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Subscription - FleetDesk</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:linear-gradient(135deg,#0f172a,#1e3a8a,#06b6d4);min-height:100vh}
+.header{padding:20px;display:flex;align-items:center;gap:15px;color:white}
+.logo{width:70px;height:70px;background:white;color:#2563eb;border-radius:20px;display:flex;justify-content:center;align-items:center;font-size:28px;font-weight:bold}
+.container{padding:25px}
+.card{background:white;padding:22px;border-radius:22px;box-shadow:0 12px 25px rgba(0,0,0,.2);margin-bottom:18px}
+.plan{background:#f8fafc;padding:18px;border-radius:18px;margin-bottom:14px;border:1px solid #dbeafe}
+.btn{width:100%;padding:14px;background:#2563eb;color:white;border:0;border-radius:12px;font-weight:bold;margin-top:10px}
+.back{display:block;text-align:center;text-decoration:none;background:#ef4444}
+.status{background:#ecfeff;padding:15px;border-radius:15px;margin-top:15px}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="logo">FD</div>
+<div>
+<h1>Fleet Owner Subscription</h1>
+<p>Monthly plan required to list vehicles</p>
+</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>Choose Subscription Plan</h2><br>
+
+<div class="plan">
+<h3>Basic Plan</h3>
+<p>₹499 / month</p>
+<p>List up to 5 vehicles</p>
+<button class="btn" onclick="selectPlan('Basic',499)">Choose Basic</button>
+</div>
+
+<div class="plan">
+<h3>Premium Plan</h3>
+<p>₹999 / month</p>
+<p>List up to 20 vehicles + verified badge</p>
+<button class="btn" onclick="selectPlan('Premium',999)">Choose Premium</button>
+</div>
+
+<div class="plan">
+<h3>Enterprise Plan</h3>
+<p>₹1999 / month</p>
+<p>Unlimited vehicles + priority support</p>
+<button class="btn" onclick="selectPlan('Enterprise',1999)">Choose Enterprise</button>
+</div>
+
+<div id="subscriptionStatus" class="status"></div>
+
+<a href="owner.html" class="btn back">Back Owner Dashboard</a>
+</div>
+
+</div>
+
+<script>
+function selectPlan(plan, amount){
+  let today = new Date();
+  let expiry = new Date();
+  expiry.setDate(today.getDate() + 30);
+
+  let subscription = {
+    plan: plan,
+    amount: amount,
+    status: "Active",
+    startDate: today.toLocaleDateString(),
+    expiryDate: expiry.toLocaleDateString()
+  };
+
+  localStorage.setItem("subscription", JSON.stringify(subscription));
+
+  document.getElementById("subscriptionStatus").innerHTML = `
+    <h3>Subscription Activated ✅</h3>
+    <p><b>Plan:</b> ${plan}</p>
+    <p><b>Amount:</b> ₹${amount}/month</p>
+    <p><b>Status:</b> Active</p>
+    <p><b>Expiry Date:</b> ${subscription.expiryDate}</p>
+  `;
+}
+
+function loadSubscription(){
+  let subscription = JSON.parse(localStorage.getItem("subscription"));
+
+  if(!subscription){
+    document.getElementById("subscriptionStatus").innerHTML =
+      "<p>No active subscription. Please choose a plan.</p>";
+    return;
+  }
+
+  document.getElementById("subscriptionStatus").innerHTML = `
+    <h3>Current Subscription</h3>
+    <p><b>Plan:</b> ${subscription.plan}</p>
+    <p><b>Amount:</b> ₹${subscription.amount}/month</p>
+    <p><b>Status:</b> ${subscription.status}</p>
+    <p><b>Expiry Date:</b> ${subscription.expiryDate}</p>
+  `;
+}
+
+loadSubscription();
+</script>
+
+</body>
+</html>
