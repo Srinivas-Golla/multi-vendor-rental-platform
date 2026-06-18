@@ -2,121 +2,207 @@
 <html>
 <head>
 <title>FleetDesk</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:linear-gradient(135deg,#0f172a,#1e3a8a,#06b6d4);min-height:100vh}
-.header{padding:20px;display:flex;align-items:center;gap:15px;color:white}
-.logo{width:70px;height:70px;background:white;color:#2563eb;border-radius:20px;display:flex;justify-content:center;align-items:center;font-size:28px;font-weight:bold}
-.container{display:flex;justify-content:center;padding:30px}
-.card{background:white;width:450px;padding:25px;border-radius:25px;box-shadow:0 15px 30px rgba(0,0,0,.2)}
-input,select{width:100%;padding:14px;margin-bottom:15px;border:1px solid #d1d5db;border-radius:12px}
-.btn{width:100%;padding:14px;background:#2563eb;color:white;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;padding:20px}
-.module{background:white;padding:20px;border-radius:20px;text-align:center;text-decoration:none;color:black;font-weight:bold;box-shadow:0 10px 20px rgba(0,0,0,.2)}
-.logout{background:#ef4444;margin:20px}
+body{background:#f4f7fc;color:#0f172a}
+.app{display:flex;min-height:100vh}
+.sidebar{width:260px;background:#061b3a;color:white;padding:20px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+.brand-logo{width:60px;height:60px;background:white;color:#2563eb;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold}
+.car-logo{width:90px}
+.sidebar a{display:block;color:white;text-decoration:none;padding:14px 16px;border-radius:12px;margin:10px 0;font-weight:600}
+.sidebar a i{margin-right:12px}
+.sidebar a:hover,.active{background:#2563eb}
+.help-box{margin-top:30px;border:1px solid rgba(255,255,255,.2);padding:18px;border-radius:15px}
+.content{flex:1;padding:25px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.user{display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:50%}
+.hero{background:linear-gradient(90deg,#dbeafe,#eff6ff);border-radius:24px;padding:30px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.hero h1{font-size:34px;margin-bottom:15px}
+.search-row{display:flex;gap:12px}
+.search-row input,.search-row select{padding:14px;border:1px solid #cbd5e1;border-radius:12px;width:230px}
+.search-row button{padding:14px 26px;background:#2563eb;color:white;border:0;border-radius:12px;font-weight:bold}
+.hero-car{width:330px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px}
+.feature-card{background:white;padding:22px;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.feature-card i{font-size:30px;color:#2563eb;margin-bottom:12px}
+.main-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:18px}
+.panel{background:white;border-radius:20px;padding:18px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.vehicle-card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;margin-top:15px}
+.vehicle-card img{width:100%;height:180px;object-fit:cover}
+.vehicle-info{padding:14px}
+.price{float:right;background:#2563eb;color:white;padding:6px 10px;border-radius:8px}
+.owner-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.owner-row img{width:38px;height:38px;border-radius:50%}
+.btn{display:block;width:100%;padding:14px;background:#2563eb;color:white;border:0;border-radius:12px;text-align:center;text-decoration:none;font-weight:bold;margin-top:12px}
+.green{background:#16a34a}
+.deposit-box{border:1px solid #dbeafe;padding:14px;border-radius:14px;margin-top:12px}
+.bottom-bar{margin-top:20px;background:#061b3a;color:white;border-radius:18px;padding:18px;display:flex;justify-content:space-around}
+@media(max-width:900px){
+.app{display:block}
+.sidebar{width:100%}
+.hero{display:block}
+.hero-car{width:100%;margin-top:20px}
+.feature-grid,.main-grid{grid-template-columns:1fr}
+.search-row{display:block}
+.search-row input,.search-row select,.search-row button{width:100%;margin-bottom:10px}
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<div class="logo">FD</div>
-<div>
-<h1>FleetDesk</h1>
-<p>Multi Vendor Rental Platform</p>
-</div>
-</div>
+<div class="app">
 
-<div id="loginPage" class="container">
-<div class="card">
-<h2>Login</h2>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-logo">FD</div>
+    <img class="car-logo" src="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+  </div>
 
-<select id="role">
-<option value="customer">Customer</option>
-<option value="owner">Fleet Owner</option>
-<option value="admin">Admin</option>
-</select>
+  <a class="active" href="index.html"><i class="fa fa-home"></i>Dashboard</a>
+  <a href="customer.html"><i class="fa fa-car"></i>Book Vehicle</a>
+  <a href="booking.html"><i class="fa fa-calendar"></i>My Bookings</a>
+  <a href="payment.html"><i class="fa fa-credit-card"></i>Payments</a>
+  <a href="#"><i class="fa fa-location-dot"></i>Search Nearby</a>
+  <a href="#"><i class="fa fa-users"></i>Fleet Owners</a>
+  <a href="#"><i class="fa fa-user"></i>My Profile</a>
+  <a href="#"><i class="fa fa-headset"></i>Support</a>
+  <a href="#" onclick="logout()"><i class="fa fa-right-from-bracket"></i>Logout</a>
 
-<input type="text" id="username" placeholder="Username">
-<input type="text" id="mobile" placeholder="Mobile Number">
-
-<button class="btn" onclick="getOtp()">Get OTP</button>
-
-<div id="otpBox" style="display:none;margin-top:15px;">
-<input type="text" id="otp" placeholder="Enter OTP">
-<button class="btn" onclick="verifyOtp()">Verify OTP</button>
-<p>Demo OTP: 1234</p>
+  <div class="help-box">
+    <h3>Need Help?</h3>
+    <p>📞 +91 98765 43210</p>
+  </div>
 </div>
 
-</div>
-</div>
+<div class="content">
 
-<div id="dashboard" style="display:none;">
-<div class="module-grid" id="modules"></div>
-<button class="btn logout" onclick="logout()">Logout</button>
+  <div class="topbar">
+    <h1>FLEET<span style="color:#2563eb">DESK</span></h1>
+    <div class="user">
+      <i class="fa fa-location-dot"></i> Hyderabad, Telangana
+      <img class="avatar" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+      <b>Customer</b>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <h1>Find The Best Vehicles<br>Near You & Book Instantly</h1>
+      <div class="search-row">
+        <input id="location" placeholder="Hyderabad, Telangana">
+        <select>
+          <option>Within 10 km</option>
+          <option>Within 20 km</option>
+          <option>Within 50 km</option>
+        </select>
+        <button onclick="alert('Nearby fleet owners searched')">
+          <i class="fa fa-search"></i> Search
+        </button>
+      </div>
+      <p style="margin-top:15px;">✅ Verified Fleet Owners &nbsp; ✅ Best Prices &nbsp; ✅ 100% Secure</p>
+    </div>
+
+    <img class="hero-car" src="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <i class="fa fa-location-dot"></i>
+      <h3>Search Nearby</h3>
+      <p>Find nearest fleet owners near your location</p>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa fa-camera"></i>
+      <h3>Photos & Details</h3>
+      <p>View car photos and vehicle information</p>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa fa-shield-halved"></i>
+      <h3>Security Deposit</h3>
+      <p>Cash deposit for cars, bike deposit for bikes</p>
+    </div>
+
+    <div class="feature-card">
+      <i class="fa fa-user-tie"></i>
+      <h3>Owner Details</h3>
+      <p>View fleet owner details for safety</p>
+    </div>
+  </div>
+
+  <div class="main-grid">
+
+    <div class="panel">
+      <h2>Browse Cars</h2>
+
+      <div class="vehicle-card">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?w=800">
+        <div class="vehicle-info">
+          <h3>Maruti Swift <span class="price">₹1500/day</span></h3>
+          <p>Petrol | Manual | 4 Seater</p>
+          <div class="owner-row">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+            <div>
+              <b>Ravi Motors</b>
+              <p>2.1 km away ⭐ 4.5</p>
+            </div>
+          </div>
+          <a class="btn" href="customer.html">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Book Vehicle</h2>
+      <p><b>Vehicle:</b> Maruti Swift</p>
+      <p><b>Owner:</b> Ravi Motors</p>
+
+      <div class="deposit-box">
+        <h3>Security Deposit</h3>
+        <p><input type="radio" checked> Cash Deposit ₹5000</p>
+        <p><input type="radio"> Bike Deposit</p>
+      </div>
+
+      <a class="btn" href="customer.html">Confirm Booking</a>
+    </div>
+
+    <div class="panel">
+      <h2>Owner Details</h2>
+      <div class="owner-row">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+        <div>
+          <h3>Ravi Motors</h3>
+          <p>Verified Owner ⭐ 4.5</p>
+        </div>
+      </div>
+      <p style="margin-top:15px;">📞 +91 98765 43210</p>
+      <p>📍 2.1 km away from you</p>
+      <p>🚘 15+ Vehicles</p>
+      <button class="btn green">Contact Owner</button>
+    </div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <div>✅ Verified Fleet Owners</div>
+    <div>🖼 Multiple Vehicle Photos</div>
+    <div>🔒 Security Deposit</div>
+    <div>📍 Find Nearest Fleet Owners</div>
+  </div>
+
+</div>
 </div>
 
 <script>
-function getOtp(){
-  document.getElementById("otpBox").style.display="block";
-}
-
-function verifyOtp(){
-  let otp=document.getElementById("otp").value;
-  if(otp!="1234"){
-    alert("Invalid OTP");
-    return;
-  }
-  openDashboard();
-}
-
-function openDashboard(){
-  let role=document.getElementById("role").value;
-
-  document.getElementById("loginPage").style.display="none";
-  document.getElementById("dashboard").style.display="block";
-
-  let modules="";
-
-  if(role=="customer"){
-    modules=`
-      <a class="module" href="customer.html">🚘 Book Vehicle</a>
-      <a class="module" href="booking.html">📅 My Bookings</a>
-      <a class="module" href="payment.html">💳 Payments</a>
-    `;
-  }
-
-  if(role=="owner"){
-    modules=`
-      <a class="module" href="owner.html">🚗 Manage Vehicles</a>
-      <a class="module" href="booking.html">📅 Bookings</a>
-      <a class="module" href="payment.html">💰 Revenue</a>
-    `;
-  }
-
-  if(role=="admin"){
-    modules=`
-      <a class="module" href="admin.html">⚙️ Admin Panel</a>
-      <a class="module" href="booking.html">📅 All Bookings</a>
-      <a class="module" href="payment.html">💳 Payments</a>
-    `;
-  }
-
-  document.getElementById("modules").innerHTML=modules;
-}
-
 function logout(){
+  localStorage.removeItem("role");
   location.href="index.html";
-}
-
-window.onload=function(){
-  let params=new URLSearchParams(window.location.search);
-  let role=params.get("role") || localStorage.getItem("role");
-
-  if(role){
-    document.getElementById("role").value=role;
-    openDashboard();
-  }
 }
 </script>
 
