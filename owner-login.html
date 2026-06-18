@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fleet Owner Login - FleetDesk</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:linear-gradient(135deg,#0f172a,#1e3a8a,#06b6d4);min-height:100vh}
+.header{padding:25px;color:white;text-align:center}
+.login-card{background:white;width:380px;margin:40px auto;padding:25px;border-radius:25px;box-shadow:0 15px 30px rgba(0,0,0,.2)}
+input{width:100%;padding:14px;margin:10px 0;border:1px solid #d1d5db;border-radius:12px}
+.btn{width:100%;padding:14px;background:#2563eb;color:white;border:none;border-radius:12px;font-weight:bold;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>FleetDesk</h1>
+<p>Fleet Owner Login / Signup</p>
+</div>
+
+<div class="login-card">
+<h2>Owner Access</h2>
+
+<input type="text" id="company" placeholder="Company / Owner Name">
+<input type="text" id="mobile" placeholder="Mobile Number">
+
+<button class="btn" onclick="getOtp()">Get OTP</button>
+
+<div id="otpBox" style="display:none;">
+<input type="text" id="otp" placeholder="Enter OTP">
+<button class="btn" onclick="login()">Verify OTP</button>
+<p>Demo OTP: 1234</p>
+</div>
+</div>
+
+<script>
+function getOtp(){
+document.getElementById("otpBox").style.display="block";
+}
+
+function login(){
+if(document.getElementById("otp").value==="1234"){
+localStorage.setItem("role","owner");
+location.href="owner.html";
+}else{
+alert("Invalid OTP");
+}
+}
+</script>
+
+</body>
+</html>
