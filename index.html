@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,83 +5,15 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
 body{background:linear-gradient(135deg,#0f172a,#1e3a8a,#06b6d4);min-height:100vh}
-
-.header{
-padding:20px;
-display:flex;
-align-items:center;
-gap:15px;
-color:white;
-}
-
-.logo{
-width:70px;
-height:70px;
-background:white;
-color:#2563eb;
-border-radius:20px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:28px;
-font-weight:bold;
-}
-
-.container{
-display:flex;
-justify-content:center;
-padding:30px;
-}
-
-.card{
-background:white;
-width:450px;
-padding:25px;
-border-radius:25px;
-box-shadow:0 15px 30px rgba(0,0,0,.2);
-}
-
-input,select{
-width:100%;
-padding:14px;
-margin-bottom:15px;
-border:1px solid #d1d5db;
-border-radius:12px;
-}
-
-.btn{
-width:100%;
-padding:14px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.module-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-padding:20px;
-}
-
-.module{
-background:white;
-padding:20px;
-border-radius:20px;
-text-align:center;
-text-decoration:none;
-color:black;
-font-weight:bold;
-box-shadow:0 10px 20px rgba(0,0,0,.2);
-}
-
-.logout{
-background:#ef4444;
-margin:20px;
-}
+.header{padding:20px;display:flex;align-items:center;gap:15px;color:white}
+.logo{width:70px;height:70px;background:white;color:#2563eb;border-radius:20px;display:flex;justify-content:center;align-items:center;font-size:28px;font-weight:bold}
+.container{display:flex;justify-content:center;padding:30px}
+.card{background:white;width:450px;padding:25px;border-radius:25px;box-shadow:0 15px 30px rgba(0,0,0,.2)}
+input,select{width:100%;padding:14px;margin-bottom:15px;border:1px solid #d1d5db;border-radius:12px}
+.btn{width:100%;padding:14px;background:#2563eb;color:white;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;padding:20px}
+.module{background:white;padding:20px;border-radius:20px;text-align:center;text-decoration:none;color:black;font-weight:bold;box-shadow:0 10px 20px rgba(0,0,0,.2)}
+.logout{background:#ef4444;margin:20px}
 </style>
 </head>
 
@@ -98,7 +29,6 @@ margin:20px;
 
 <div id="loginPage" class="container">
 <div class="card">
-
 <h2>Login</h2>
 
 <select id="role">
@@ -108,7 +38,6 @@ margin:20px;
 </select>
 
 <input type="text" id="username" placeholder="Username">
-
 <input type="text" id="mobile" placeholder="Mobile Number">
 
 <button class="btn" onclick="getOtp()">Get OTP</button>
@@ -123,75 +52,73 @@ margin:20px;
 </div>
 
 <div id="dashboard" style="display:none;">
-
 <div class="module-grid" id="modules"></div>
-
-<button class="btn logout" onclick="logout()">
-Logout
-</button>
-
+<button class="btn logout" onclick="logout()">Logout</button>
 </div>
 
 <script>
-
 function getOtp(){
-document.getElementById("otpBox").style.display="block";
+  document.getElementById("otpBox").style.display="block";
 }
 
 function verifyOtp(){
-
-let otp=document.getElementById("otp").value;
-
-if(otp!="1234"){
-alert("Invalid OTP");
-return;
-}
-
-openDashboard();
+  let otp=document.getElementById("otp").value;
+  if(otp!="1234"){
+    alert("Invalid OTP");
+    return;
+  }
+  openDashboard();
 }
 
 function openDashboard(){
+  let role=document.getElementById("role").value;
 
-let role=document.getElementById("role").value;
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("dashboard").style.display="block";
 
-document.getElementById("loginPage").style.display="none";
-document.getElementById("dashboard").style.display="block";
+  let modules="";
 
-let modules="";
+  if(role=="customer"){
+    modules=`
+      <a class="module" href="customer.html">🚘 Book Vehicle</a>
+      <a class="module" href="booking.html">📅 My Bookings</a>
+      <a class="module" href="payment.html">💳 Payments</a>
+    `;
+  }
 
-if(role=="customer"){
-modules=`
-<a class="module" href="customer.html">🚘 Book Vehicle</a>
-<a class="module" href="booking.html">📅 My Bookings</a>
-<a class="module" href="payment.html">💳 Payments</a>
-`;
-}
+  if(role=="owner"){
+    modules=`
+      <a class="module" href="owner.html">🚗 Manage Vehicles</a>
+      <a class="module" href="booking.html">📅 Bookings</a>
+      <a class="module" href="payment.html">💰 Revenue</a>
+    `;
+  }
 
-if(role=="owner"){
-modules=`
-<a class="module" href="owner.html">🚗 Manage Vehicles</a>
-<a class="module" href="booking.html">📅 Bookings</a>
-<a class="module" href="payment.html">💰 Revenue</a>
-`;
-}
+  if(role=="admin"){
+    modules=`
+      <a class="module" href="admin.html">⚙️ Admin Panel</a>
+      <a class="module" href="booking.html">📅 All Bookings</a>
+      <a class="module" href="payment.html">💳 Payments</a>
+    `;
+  }
 
-if(role=="admin"){
-modules=`
-<a class="module" href="admin.html">⚙️ Admin Panel</a>
-<a class="module" href="booking.html">📅 All Bookings</a>
-<a class="module" href="payment.html">💳 Payments</a>
-`;
-}
-
-document.getElementById("modules").innerHTML=modules;
+  document.getElementById("modules").innerHTML=modules;
 }
 
 function logout(){
-location.reload();
+  location.href="index.html";
 }
 
+window.onload=function(){
+  let params=new URLSearchParams(window.location.search);
+  let role=params.get("role");
+
+  if(role){
+    document.getElementById("role").value=role;
+    openDashboard();
+  }
+}
 </script>
 
 </body>
 </html>
-```
